@@ -43,14 +43,14 @@ export default function DeliveryExperience() {
                         </div>
 
                         {/* Enhanced Info Card */}
-                        <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 p-4 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-black/40 backdrop-blur-2xl border border-white/10">
+                        <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 p-4 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-black/20 backdrop-blur-2xl border border-white/10">
                             <div className="flex flex-col gap-1">
                                 <h4 className="text-xl lg:text-5xl font-black italic uppercase text-white tracking-tighter leading-none mb-1 lg:mb-2">
                                     Mynor <span className="text-brand-gold">Veliz</span>
                                 </h4>
                                 <div className="flex items-center gap-2 lg:gap-3">
                                     <div className="h-px w-6 lg:w-8 bg-brand-gold" />
-                                    <p className="text-white/70 text-[10px] lg:text-base font-bold tracking-widest uppercase font-outfit">
+                                    <p className="text-white/90 text-[10px] lg:text-base font-bold tracking-widest uppercase font-outfit">
                                         El Corazón de la Panadería
                                     </p>
                                 </div>
@@ -96,7 +96,7 @@ export default function DeliveryExperience() {
                                 </div>
                                 <div>
                                     <h4 className="text-lg lg:text-2xl font-bold mb-1 lg:mb-2 uppercase italic text-white">{item.title}</h4>
-                                    <p className="text-neutral-300 text-sm lg:text-lg leading-relaxed">{item.desc}</p>
+                                    <p className="text-white/80 text-sm lg:text-lg leading-relaxed">{item.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
