@@ -158,39 +158,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Winter Season Special Campaign */}
-      <section ref={targetRef} className="relative py-24 lg:py-48 px-4 overflow-hidden">
-        <motion.div style={{ y: y2 }} className="absolute inset-0">
-          <Image
-            src="/coffee-winter.jpg"
-            alt="Café caliente y pan guatemalteco"
-            fill
-            className="object-cover object-[center_30%] brightness-[0.4]"
-          />
-        </motion.div>
-        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
 
-
-          <h2 className="text-4xl sm:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter text-white mb-6 drop-shadow-2xl">
-            FRIO AFUERA, <br />
-            <span className="text-brand-gold">CALOR DE HOGAR</span> ADENTRO
-          </h2>
-
-          <p className="max-w-2xl text-lg sm:text-2xl text-neutral-200 font-medium leading-relaxed mb-8 drop-shadow-lg">
-            Nada combate mejor el invierno de los Hamptons que una taza de café humeante y un pan recién salido del horno.
-            <span className="block mt-4 text-white font-bold">¡La combinación perfecta para el alma!</span>
-          </p>
-
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#productos"
-            className="px-8 py-4 bg-white text-black rounded-2xl font-black text-base sm:text-lg uppercase tracking-widest hover:bg-brand-cream transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
-          >
-            Ver Menú de Invierno
-          </motion.a>
-        </div>
-      </section>
 
       {/* Infinite Gallery - Panguate Folder */}
       <InfiniteGallery />
@@ -289,17 +257,39 @@ export default function Home() {
             className="relative group order-2 lg:order-1"
           >
             <div className="absolute inset-0 bg-brand-gold/20 blur-[60px] rounded-full group-hover:bg-brand-gold/30 transition-colors" />
-            <div className="relative h-[300px] md:h-[600px] lg:h-[700px] rounded-[40px] lg:rounded-[60px] border border-white/20 overflow-hidden bg-white/5 shadow-2xl backdrop-blur-sm">
+            <div className="relative h-[400px] md:h-[650px] lg:h-[800px] rounded-[40px] lg:rounded-[60px] border border-white/20 overflow-hidden bg-white/5 shadow-2xl backdrop-blur-sm group">
               <Image
                 src="/pana3.png"
                 alt="Mynor Veliz - Maestro Panadero Guatemalteco"
                 fill
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-1000"
+                className="object-cover object-top scale-[1.02] group-hover:scale-110 transition-transform duration-[2s] ease-out shadow-inner"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-x-4 lg:inset-x-10 bottom-4 lg:bottom-10 p-5 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-white/95">
-                <h4 className="text-xl lg:text-3xl font-black italic mb-2 lg:mb-4 uppercase text-black">Mynor Veliz</h4>
-                <p className="text-neutral-600 text-sm lg:text-lg font-bold">El Maestro Detrás del Sabor</p>
+              {/* Floating Badge */}
+              <div className="absolute top-8 left-8 z-20">
+                <motion.div
+                  initial={{ rotate: -5 }}
+                  animate={{ rotate: 5 }}
+                  transition={{ duration: 4, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+                  className="bg-brand-gold py-2 px-6 rounded-full shadow-[0_10px_20px_rgba(212,165,116,0.3)] border border-white/20"
+                >
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white">Maestro Panadero</span>
+                </motion.div>
+              </div>
+
+              {/* Enhanced Info Card */}
+              <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 p-6 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-black/40 backdrop-blur-2xl border border-white/10">
+                <div className="flex flex-col gap-1">
+                  <h4 className="text-2xl lg:text-5xl font-black italic uppercase text-white tracking-tighter leading-none mb-2">
+                    Mynor <span className="text-brand-gold">Veliz</span>
+                  </h4>
+                  <div className="flex items-center gap-3">
+                    <div className="h-px w-8 bg-brand-gold" />
+                    <p className="text-white/70 text-xs lg:text-base font-bold tracking-widest uppercase font-outfit">
+                      El Corazón de la Panadería
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -347,6 +337,40 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Winter Season Special Campaign */}
+      <section ref={targetRef} className="relative py-24 lg:py-48 px-4 overflow-hidden">
+        <motion.div style={{ y: y2 }} className="absolute inset-0">
+          <Image
+            src="/coffee-winter.jpg"
+            alt="Café caliente y pan guatemalteco"
+            fill
+            className="object-cover object-[center_30%] brightness-[0.4]"
+          />
+        </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
+
+
+          <h2 className="text-4xl sm:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter text-white mb-6 drop-shadow-2xl">
+            FRIO AFUERA, <br />
+            <span className="text-brand-gold">CALOR DE HOGAR</span> ADENTRO
+          </h2>
+
+          <p className="max-w-2xl text-lg sm:text-2xl text-neutral-200 font-medium leading-relaxed mb-8 drop-shadow-lg">
+            Nada combate mejor el invierno de los Hamptons que una taza de café humeante y un pan recién salido del horno.
+            <span className="block mt-4 text-white font-bold">¡La combinación perfecta para el alma!</span>
+          </p>
+
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#productos"
+            className="px-8 py-4 bg-white text-black rounded-2xl font-black text-base sm:text-lg uppercase tracking-widest hover:bg-brand-cream transition-all shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+          >
+            Ver Menú de Invierno
+          </motion.a>
         </div>
       </section>
 
