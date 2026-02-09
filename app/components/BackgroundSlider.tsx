@@ -13,7 +13,7 @@ const images = [
     "/panguate/file_00000000788c71f7b7cceb93dbc9df4e.png",
     "/panguate/file_00000000d80871f78fd0ab134dae54af.png",
     "/panguate/file_00000000ecd471f7bc6d78641cf3a33f.png",
-    "/panguate/logo2.png"
+    "/coffee-winter.jpg"
 ];
 
 export default function BackgroundSlider() {
@@ -51,11 +51,11 @@ export default function BackgroundSlider() {
                         src={src}
                         alt="Fondo de panadería artesanal"
                         fill
-                        priority={i === 0 || i === index}
+                        priority={i === index}
                         quality={70}
                         sizes="100vw"
                         className="object-cover"
-                        loading={i === 0 ? "eager" : "lazy"}
+                        loading={i === index ? undefined : "lazy"}
                     />
                     <div className="absolute inset-0 bg-black/30" />
                 </motion.div>
