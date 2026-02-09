@@ -138,14 +138,7 @@ export default function Home() {
             transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 lg:gap-6"
           >
-            <motion.button
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              className="group px-6 sm:px-10 py-4 lg:py-5 bg-gradient-to-r from-brand-gold to-brand-brown rounded-2xl font-black text-base sm:text-lg shadow-[0_20px_40px_rgba(212,165,116,0.2)] flex items-center justify-center gap-3 italic text-white"
-            >
-              VER EL MENÚ <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+
             <motion.button
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}

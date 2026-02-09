@@ -17,7 +17,11 @@ export const metadata: Metadata = {
     canonical: "https://guatemalanbread.com",
   },
   icons: {
-    icon: "/panguate/logo2.png",
+    icon: [
+      { url: "/panguate/logo2.png" },
+      { url: "/panguate/logo2.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/panguate/logo2.png",
     apple: "/panguate/logo2.png",
   },
   openGraph: {
@@ -29,18 +33,18 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/pan/pan-recien-horneado.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Pan Artesanal Guatemalteco recién horneado",
+        url: "/panguate/logo2.png",
+        width: 800,
+        height: 800,
+        alt: "Guatemalan Bread Logo",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Guatemalan Bread | Panadería Artesanal NY",
     description: "El sabor de Guatemala directo a tu puerta en The Hamptons.",
-    images: ["/pan/pan-recien-horneado.jpg"],
+    images: ["/panguate/logo2.png"],
   },
 };
 
