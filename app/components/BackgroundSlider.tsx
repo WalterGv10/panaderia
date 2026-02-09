@@ -33,28 +33,33 @@ export default function BackgroundSlider() {
 
     return (
         <div className="fixed inset-0 z-[-1] h-[100dvh] w-full overflow-hidden bg-black">
-            <AnimatePresence mode='popLayout'>
+            {images.map((src, i) => (
                 <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    className="absolute inset-0 h-full w-full"
+                    key={src}
+                    initial={false}
+                    animate={{
+                        opacity: index === i ? 1 : 0,
+                        scale: index === i ? 1.05 : 1,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="absolute inset-0 h-full w-full will-change-[opacity,transform]"
                 >
                     <Image
-                        src={images[index]}
+                        src={src}
                         alt="Fondo de panadería artesanal"
                         fill
-                        priority={true}
-                        quality={80}
+                        priority={i === 0 || i === index}
+                        quality={70}
                         sizes="100vw"
                         className="object-cover"
+                        loading={i === 0 ? "eager" : "lazy"}
                     />
-                    {/* Overlay for better text readability - adjusted for responsiveness */}
-                    <div className="absolute inset-0 bg-black/20" />
+                    <div className="absolute inset-0 bg-black/30" />
                 </motion.div>
-            </AnimatePresence>
+            ))}
         </div>
     );
 }
