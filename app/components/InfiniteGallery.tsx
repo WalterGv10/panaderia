@@ -44,7 +44,7 @@ export default function InfiniteGallery() {
                         >
                             <Image
                                 src={src}
-                                alt={`Panadería Guatemalteca Galería ${i}`}
+                                alt={`Pan Artesanal Guatemalteco - Especialidad de la casa Mynor Veliz Hamptons ${i}`}
                                 fill
                                 className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 sizes="(max-width: 768px) 300px, 400px"
@@ -61,7 +61,7 @@ export default function InfiniteGallery() {
                         >
                             <Image
                                 src={src}
-                                alt={`Panadería Guatemalteca Galería ${i}`}
+                                alt={`Pan Artesanal Guatemalteco - Especialidad de la casa Mynor Veliz Hamptons ${i}`}
                                 fill
                                 className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 sizes="(max-width: 768px) 300px, 400px"

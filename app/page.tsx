@@ -103,7 +103,7 @@ export default function Home() {
           src="/coffee-winter.jpg"
           alt="Café caliente y pan guatemalteco"
           fill
-          className="object-cover brightness-[0.4]"
+          className="object-cover object-[center_30%] brightness-[0.4]"
         />
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
 
@@ -303,15 +303,14 @@ export default function Home() {
           <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 pt-8">
             <div className="flex flex-col items-center md:items-start">
               <div className="flex items-center gap-3 mb-4">
-                <Image src="/logo.svg" alt="Guatemalan Bread Logo" width={48} height={48} className="w-12 h-12 opacity-50" />
+                <Image src="/panguate/logo2.png" alt="Guatemalan Bread Logo" width={60} height={60} className="w-16 h-16 object-contain" />
                 <span className="text-xl font-black tracking-tighter uppercase text-black/40">Guatemalan Bread</span>
               </div>
               <p className="text-black/20 text-xs font-bold tracking-widest uppercase">The Hamptons, New York</p>
             </div>
 
             <div className="flex gap-8">
-              <a href="#" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center text-black/20 hover:text-brand-brown hover:border-brand-brown/50 transition-all"><Instagram className="w-5 h-5" /></a>
-              <a href="#" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center text-black/20 hover:text-brand-brown hover:border-brand-brown/50 transition-all"><Phone className="w-5 h-5" /></a>
+              <a href="tel:6319030520" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center text-black/20 hover:text-brand-brown hover:border-brand-brown/50 transition-all"><Phone className="w-5 h-5" /></a>
             </div>
 
             <p className="text-black/20 text-[10px] font-black tracking-[0.3em] uppercase">
