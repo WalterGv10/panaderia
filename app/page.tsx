@@ -1,7 +1,8 @@
 'use client';
 
+import { useRef } from 'react';
 import { ChefHat, Truck, Phone, MapPin, ChevronRight, ShoppingBasket, Star, Instagram, Music } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import BackgroundSlider from './components/BackgroundSlider';
 import Navbar from './components/Navbar';
 import InfiniteGallery from './components/InfiniteGallery';
@@ -38,6 +39,23 @@ export default function Home() {
 
   ];
 
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+
+  const serviceRef = useRef(null);
+  const { scrollYProgress: scrollY2 } = useScroll({
+    target: serviceRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y3 = useTransform(scrollY2, [0, 1], [0, -150]);
+
   return (
     <main className="relative min-h-screen selection:bg-brand-gold selection:text-white">
       <BackgroundSlider />
@@ -47,13 +65,30 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative pt-32 lg:pt-48 pb-16 lg:pb-24 px-4 max-w-7xl mx-auto overflow-hidden min-h-[60vh] flex flex-col justify-center">
-        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-brand-gold/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-brand-brown/5 blur-[120px] rounded-full pointer-events-none" />
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 5, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 -right-20 w-96 h-96 bg-brand-gold/10 blur-[120px] rounded-full pointer-events-none"
+        />
+        <motion.div
+          animate={{
+            y: [0, 20, 0],
+            rotate: [0, -5, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-1/4 -left-20 w-96 h-96 bg-brand-brown/5 blur-[120px] rounded-full pointer-events-none"
+        />
 
         <div className="relative z-10 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 100 }}
             className="flex items-center gap-4 mb-6 lg:mb-10 group"
           >
             <div className="h-[2px] w-8 lg:w-12 bg-brand-gold group-hover:w-20 transition-all duration-500" />
@@ -63,19 +98,35 @@ export default function Home() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+              }
+            }}
             className="text-5xl sm:text-7xl lg:text-[110px] font-black tracking-tighter mb-6 lg:mb-10 leading-[0.9] lg:leading-[0.85] italic uppercase text-white drop-shadow-md"
           >
-            Tradición que <br />
-            <span className="text-gradient">No tiene Fronteras</span>
+            <motion.span
+              variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
+              className="block"
+            >
+              Tradición que
+            </motion.span>
+            <motion.span
+              variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
+              className="text-gradient block"
+            >
+              No tiene Fronteras
+            </motion.span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="max-w-2xl text-base sm:text-xl lg:text-2xl text-neutral-200 mb-8 lg:mb-14 font-medium leading-relaxed drop-shadow-sm"
           >
             Pan artesanal horneado con pasión. Mynor Veliz trae el sabor de hogar a tu puerta en NY. Frescura garantizada, desde conchas hasta pan francés.
@@ -84,27 +135,39 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 lg:gap-6"
           >
-            <button className="group px-6 sm:px-10 py-4 lg:py-5 bg-gradient-to-r from-brand-gold to-brand-brown rounded-2xl font-black text-base sm:text-lg hover:scale-105 transition-all shadow-[0_20px_40px_rgba(212,165,116,0.2)] flex items-center justify-center gap-3 italic text-white">
+            <motion.button
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="group px-6 sm:px-10 py-4 lg:py-5 bg-gradient-to-r from-brand-gold to-brand-brown rounded-2xl font-black text-base sm:text-lg shadow-[0_20px_40px_rgba(212,165,116,0.2)] flex items-center justify-center gap-3 italic text-white"
+            >
               VER EL MENÚ <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="px-6 sm:px-10 py-4 lg:py-5 bg-white border border-black/5 rounded-2xl font-black text-base sm:text-lg hover:bg-neutral-50 transition-all uppercase italic text-black shadow-lg shadow-black/5">
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="px-6 sm:px-10 py-4 lg:py-5 bg-white border border-black/5 rounded-2xl font-black text-base sm:text-lg hover:bg-neutral-50 transition-all uppercase italic text-black shadow-lg shadow-black/5"
+            >
               631-903-0520
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </section>
 
       {/* Winter Season Special Campaign */}
-      <section className="relative py-24 lg:py-48 px-4 overflow-hidden">
-        <Image
-          src="/coffee-winter.jpg"
-          alt="Café caliente y pan guatemalteco"
-          fill
-          className="object-cover object-[center_30%] brightness-[0.4]"
-        />
+      <section ref={targetRef} className="relative py-24 lg:py-48 px-4 overflow-hidden">
+        <motion.div style={{ y: y2 }} className="absolute inset-0">
+          <Image
+            src="/coffee-winter.jpg"
+            alt="Café caliente y pan guatemalteco"
+            fill
+            className="object-cover object-[center_30%] brightness-[0.4]"
+          />
+        </motion.div>
         <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
 
 
@@ -147,7 +210,13 @@ export default function Home() {
 
       {/* Products Grid */}
       <section id="productos" className="py-16 lg:py-32 px-4 max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-24 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-24 gap-6"
+        >
           <div>
             <span className="text-brand-gold font-bold tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-4 block">Del Horno a tu Mesa</span>
             <h2 className="text-3xl sm:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter text-white drop-shadow-sm">Nuestras Joyas</h2>
@@ -155,16 +224,26 @@ export default function Home() {
           <p className="max-w-md text-neutral-300 font-medium text-base sm:text-lg leading-relaxed">
             Cada pieza es elaborada siguiendo las recetas tradicionales guatemaltecas que han definido nuestro sabor por años.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                delay: i * 0.1,
+                type: "spring",
+                stiffness: 70,
+                damping: 15
+              }}
+              whileHover={{
+                y: -15,
+                scale: 1.02,
+                transition: { type: "spring", stiffness: 400, damping: 10 }
+              }}
               className="group relative bg-white p-8 rounded-[32px] border border-black/5 hover:border-brand-gold transition-all duration-500 hover:shadow-[0_20px_40px_rgba(212,165,116,0.15)] flex flex-col items-start overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700 pointer-events-none">
@@ -203,38 +282,60 @@ export default function Home() {
       </section>
 
       {/* Delivery Experience */}
-      <section id="servicio" className="py-16 lg:py-40 relative">
+      <section ref={serviceRef} id="servicio" className="py-16 lg:py-40 relative">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          <div className="relative group order-2 lg:order-1">
+          <motion.div
+            style={{ y: y3 }}
+            className="relative group order-2 lg:order-1"
+          >
             <div className="absolute inset-0 bg-brand-gold/20 blur-[60px] rounded-full group-hover:bg-brand-gold/30 transition-colors" />
             <div className="relative h-[300px] md:h-[600px] lg:h-[700px] rounded-[40px] lg:rounded-[60px] border border-white/20 overflow-hidden bg-white/5 shadow-2xl backdrop-blur-sm">
               <Image
-                src="/pan-dulce.jpg"
-                alt="Pan Dulce Guatemalteco Auténtico"
+                src="/pana3.png"
+                alt="Mynor Veliz - Maestro Panadero Guatemalteco"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-1000"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-x-4 lg:inset-x-10 bottom-4 lg:bottom-10 p-5 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-white/90">
-                <h4 className="text-xl lg:text-3xl font-black italic mb-2 lg:mb-4 uppercase text-black">Horneado Hoy</h4>
-                <p className="text-neutral-600 text-sm lg:text-lg">Entregamos frescura total. Sin conservantes, directo desde el horno.</p>
+              <div className="absolute inset-x-4 lg:inset-x-10 bottom-4 lg:bottom-10 p-5 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-white/95">
+                <h4 className="text-xl lg:text-3xl font-black italic mb-2 lg:mb-4 uppercase text-black">Mynor Veliz</h4>
+                <p className="text-neutral-600 text-sm lg:text-lg font-bold">El Maestro Detrás del Sabor</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="order-1 lg:order-2">
-            <h2 className="text-3xl md:text-6xl lg:text-8xl font-black mb-6 lg:mb-12 italic uppercase leading-[0.9] lg:leading-[0.85] tracking-tighter text-white drop-shadow-sm">
+            <motion.h2
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl md:text-6xl lg:text-8xl font-black mb-6 lg:mb-12 italic uppercase leading-[0.9] lg:leading-[0.85] tracking-tighter text-white drop-shadow-sm"
+            >
               EL SABOR <br /> <span className="text-gradient">TE ALCANZA</span>
-            </h2>
-            <p className="text-lg lg:text-2xl text-neutral-200 mb-8 lg:mb-16 font-medium leading-relaxed drop-shadow-sm">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-lg lg:text-2xl text-neutral-200 mb-8 lg:mb-16 font-medium leading-relaxed drop-shadow-sm"
+            >
               No importa en qué rincón de The Hamptons estés, llegamos con el pan calientito listo para tus tamales o tu café.
-            </p>
+            </motion.p>
 
             <div className="space-y-6 lg:space-y-12">
               {[
                 { icon: <MapPin className="text-brand-gold" />, title: "Cobertura Hamptons", desc: "Servicio exclusivo en Southampton, East Hampton y alrededores." }
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 lg:gap-8 group p-5 lg:p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/5 hover:bg-white/10 transition-all">
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 + (i * 0.1) }}
+                  className="flex items-start gap-4 lg:gap-8 group p-5 lg:p-6 rounded-3xl bg-white/5 backdrop-blur-md border border-white/5 hover:bg-white/10 transition-all font-outfit"
+                >
                   <div className="w-12 h-12 lg:w-20 lg:h-20 rounded-[20px] lg:rounded-[30px] bg-brand-cream flex items-center justify-center group-hover:bg-brand-gold/20 transition-colors shrink-0">
                     <div className="w-5 h-5 lg:w-8 lg:h-8">{item.icon}</div>
                   </div>
@@ -242,7 +343,7 @@ export default function Home() {
                     <h4 className="text-lg lg:text-2xl font-bold mb-1 lg:mb-2 uppercase italic text-white">{item.title}</h4>
                     <p className="text-neutral-300 text-sm lg:text-lg leading-relaxed">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -313,9 +414,24 @@ export default function Home() {
               <a href="tel:6319030520" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center text-black/20 hover:text-brand-brown hover:border-brand-brown/50 transition-all"><Phone className="w-5 h-5" /></a>
             </div>
 
-            <p className="text-black/20 text-[10px] font-black tracking-[0.3em] uppercase">
-              © 2026 DESARROLLADO POR WALWEB
-            </p>
+            <div className="flex flex-col items-center md:items-end gap-2">
+              <span className="text-black/20 text-[10px] font-black tracking-[0.3em] uppercase">
+                © 2026 Crafted by
+              </span>
+              <a
+                href="https://walweb.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center md:items-end"
+              >
+                <span className="text-black/40 text-lg font-black tracking-tighter group-hover:text-brand-gold transition-colors duration-300">
+                  WalWeb
+                </span>
+                <span className="text-black/20 text-[8px] font-bold tracking-[0.1em] uppercase group-hover:text-black/30 transition-colors">
+                  Premium Web Development & Digital Experiences
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
