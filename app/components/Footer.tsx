@@ -8,12 +8,24 @@ export default function Footer() {
         <footer className="py-20 px-8 border-t border-black/5 bg-white">
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-12">
                 <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 pt-8">
-                    <div className="flex flex-col items-center md:items-start">
-                        <div className="flex items-center gap-3 mb-4">
-                            <Image src="/panguate/logo2.png" alt="Guatemalan Bread Logo" width={60} height={60} className="w-16 h-16 object-contain" />
-                            <span className="text-xl font-black tracking-tighter uppercase text-black/40">Guatemalan Bread</span>
+                    <div className="flex flex-col items-center md:items-start gap-6">
+                        <div className="relative w-24 h-24 md:w-20 md:h-20">
+                            <Image
+                                src="/panguate/logo2.png"
+                                alt="Guatemalan Bread Logo"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
                         </div>
-                        <p className="text-black/20 text-xs font-bold tracking-widest uppercase">The Hamptons, New York</p>
+                        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                            <span className="text-2xl font-black tracking-tighter uppercase text-black">
+                                Guatemalan Bread
+                            </span>
+                            <p className="text-black/40 text-xs font-bold tracking-[0.2em] uppercase">
+                                The Hamptons, New York
+                            </p>
+                        </div>
                     </div>
 
                     <div className="flex gap-8">

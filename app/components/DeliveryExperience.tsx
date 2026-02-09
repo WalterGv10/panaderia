@@ -22,7 +22,7 @@ export default function DeliveryExperience() {
                     className="relative group order-2 lg:order-1"
                 >
                     <div className="absolute inset-0 bg-brand-gold/20 blur-[60px] rounded-full group-hover:bg-brand-gold/30 transition-colors" />
-                    <div className="relative h-[400px] md:h-[650px] lg:h-[800px] rounded-[40px] lg:rounded-[60px] border border-white/20 overflow-hidden bg-white/5 shadow-2xl backdrop-blur-sm group">
+                    <div className="relative h-[500px] md:h-[650px] lg:h-[800px] rounded-[40px] lg:rounded-[60px] border border-white/20 overflow-hidden bg-white/5 shadow-2xl backdrop-blur-sm group">
                         <Image
                             src="/pana3.png"
                             alt="Mynor Veliz - Maestro Panadero Guatemalteco"
@@ -43,14 +43,14 @@ export default function DeliveryExperience() {
                         </div>
 
                         {/* Enhanced Info Card */}
-                        <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 p-6 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-black/40 backdrop-blur-2xl border border-white/10">
+                        <div className="absolute inset-x-4 lg:inset-x-8 bottom-4 lg:bottom-8 p-4 lg:p-10 glass-card rounded-[30px] lg:rounded-[40px] bg-black/40 backdrop-blur-2xl border border-white/10">
                             <div className="flex flex-col gap-1">
-                                <h4 className="text-2xl lg:text-5xl font-black italic uppercase text-white tracking-tighter leading-none mb-2">
+                                <h4 className="text-xl lg:text-5xl font-black italic uppercase text-white tracking-tighter leading-none mb-1 lg:mb-2">
                                     Mynor <span className="text-brand-gold">Veliz</span>
                                 </h4>
-                                <div className="flex items-center gap-3">
-                                    <div className="h-px w-8 bg-brand-gold" />
-                                    <p className="text-white/70 text-xs lg:text-base font-bold tracking-widest uppercase font-outfit">
+                                <div className="flex items-center gap-2 lg:gap-3">
+                                    <div className="h-px w-6 lg:w-8 bg-brand-gold" />
+                                    <p className="text-white/70 text-[10px] lg:text-base font-bold tracking-widest uppercase font-outfit">
                                         El Corazón de la Panadería
                                     </p>
                                 </div>
