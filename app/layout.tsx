@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://guatemalanbread.com'),
+  metadataBase: new URL('https://guatemalanbread.vercel.app'),
   title: "Guatemalan Bread | Panadería Artesanal en The Hamptons, NY",
   description: "Descubre el sabor auténtico de Guatemala en The Hamptons. Pan artesanal horneado hoy: conchas, champurradas, pan francés y más. Entrega a domicilio en NY.",
   keywords: ["Guatemalan Bread", "Pan Guatemalteco NY", "Panadería Hamptons", "Mynor Veliz", "Pan artesanal Guatemala", "Reparto de pan NY"],
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   alternates: {
-    canonical: "https://guatemalanbread.com",
+    canonical: "https://guatemalanbread.vercel.app",
   },
   icons: {
     icon: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Guatemalan Bread | El Auténtico Sabor de Guatemala en NY",
     description: "Panadería artesanal con entrega a domicilio en The Hamptons. Frescura garantizada en cada pieza.",
-    url: "https://guatemalanbread.com",
+    url: "https://guatemalanbread.vercel.app",
     siteName: "Guatemalan Bread",
     locale: "es_US",
     type: "website",
