@@ -33,42 +33,43 @@ export default function InfiniteGallery() {
                 </h2>
             </div>
 
-            {/* Infinite Horizontal Scroll */}
-            <div className="relative flex w-full">
-                <div className="flex gap-8 animate-infinite-scroll hover:pause">
-                    {/* Render images twice for seamless loop */}
-                    {[...galleryImages, ...galleryImages].map((src, i) => (
-                        <div
+            {/* Draggable Carousel */}
+            <div ref={containerRef} className="relative w-full cursor-grab active:cursor-grabbing overflow-hidden">
+                <motion.div
+                    drag="x"
+                    dragConstraints={{ left: -1500, right: 0 }}
+                    dragElastic={0.2}
+                    className="flex gap-8 px-6"
+                >
+                    {galleryImages.map((src, i) => (
+                        <motion.div
                             key={i}
-                            className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0 rounded-[40px] overflow-hidden group border border-black/5"
+                            whileHover={{ y: -10 }}
+                            className="relative w-[280px] h-[350px] md:w-[450px] md:h-[550px] flex-shrink-0 rounded-[40px] overflow-hidden group border border-black/5 shadow-xl shadow-black/5"
                         >
                             <Image
                                 src={src}
                                 alt={`Pan Artesanal Guatemalteco - Especialidad de la casa Mynor Veliz Hamptons ${i}`}
                                 fill
-                                className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                sizes="(max-width: 768px) 300px, 400px"
+                                className="object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+                                sizes="(max-width: 768px) 280px, 450px"
+                                draggable={false}
                             />
-                            <div className="absolute inset-0 bg-brand-brown/0 group-hover:bg-brand-brown/20 transition-colors duration-500" />
-                        </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute bottom-6 left-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                <span className="text-white font-black italic uppercase tracking-widest text-sm drop-shadow-lg">
+                                    Calidad Artesanal
+                                </span>
+                            </div>
+                        </motion.div>
                     ))}
-                </div>
-                <div className="flex gap-8 animate-infinite-scroll hover:pause" aria-hidden="true">
-                    {[...galleryImages, ...galleryImages].map((src, i) => (
-                        <div
-                            key={`dup-${i}`}
-                            className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex-shrink-0 rounded-[40px] overflow-hidden group border border-black/5"
-                        >
-                            <Image
-                                src={src}
-                                alt={`Pan Artesanal Guatemalteco - Especialidad de la casa Mynor Veliz Hamptons ${i}`}
-                                fill
-                                className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                sizes="(max-width: 768px) 300px, 400px"
-                            />
-                            <div className="absolute inset-0 bg-brand-brown/0 group-hover:bg-brand-brown/20 transition-colors duration-500" />
-                        </div>
-                    ))}
+                </motion.div>
+
+                {/* Interaction Indicator */}
+                <div className="flex justify-center mt-12 gap-2">
+                    <div className="h-1 w-12 bg-brand-gold rounded-full opacity-30" />
+                    <div className="h-1 w-4 bg-brand-gold rounded-full" />
+                    <div className="h-1 w-12 bg-brand-gold rounded-full opacity-30" />
                 </div>
             </div>
         </section>
